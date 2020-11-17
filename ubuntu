@@ -1,0 +1,8 @@
+#!/bin/bash
+
+STATUS=$(virsh list | grep ubuntu)
+if [ -z "$STATUS" ]
+then
+    echo Starting VM; virsh start ubuntu
+fi
+ssh -o 'ConnectionAttempts 60' -p 2222 localhost
