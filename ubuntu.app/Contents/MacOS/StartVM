@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+printf "#!/usr/bin/env bash\nvirsh start ubuntu > /dev/null 2>&1\nuntil ssh -q -p2222 localhost exit; do ((c++)) && ((c==90)) && break; sleep 1; done\nssh -p2222 localhost\n" > /tmp/startvm.command
+chmod +x /tmp/startvm.command
+open -a Terminal.app /tmp/startvm.command
