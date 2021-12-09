@@ -24,7 +24,7 @@
         </disk>
         <disk type='file' device='disk'>
             <source file='/Users/yoonsik/vms/ubuntu-20.04.3-live-server-arm64.iso'/>
-            <target dev='hdb' bus='virtio'/>
+            <target dev='vdb' bus='virtio'/>
         </disk>
         <console type='pty'>
             <target type='serial'/>
