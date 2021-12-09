@@ -39,7 +39,7 @@
     <seclabel type='none'/>
     <qemu:commandline>
         <qemu:arg value='-machine'/>
-        <qemu:arg value='type=virt,highmem=off'/>
+        <qemu:arg value='highmem=off'/>
         <qemu:arg value='-accel'/>
         <qemu:arg value='hvf'/>
         <qemu:arg value='-netdev'/>
