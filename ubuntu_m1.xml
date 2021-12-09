@@ -1,0 +1,50 @@
+<domain type='qemu' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+    <name>ubuntu</name>
+    <uuid>2005CC24-522A-4485-9B9A-E60A61D9F8CF</uuid>
+    <memory unit='GB'>2</memory>
+    <cpu mode='custom' match="exact">
+       <model>host</model>
+    </cpu>
+    <vcpu>2</vcpu>
+    <features>
+        <gic version='2'/>
+    </features>
+    <os firmware='efi'>
+        <type arch='aarch64' machine='virt'>hvm</type>
+        <bootmenu enable='yes'/>
+    </os>
+    <clock offset='localtime'/>
+    <devices>
+        <emulator>/opt/homebrew/bin/qemu-system-aarch64</emulator>
+        <controller type='usb' model='qemu-xhci'/>
+        <disk type='file' device='disk'>
+            <driver name='qemu' type='qcow2'/>
+            <source file='/Users/yoonsik/vms/ubuntu.qcow2'/>
+            <target dev='vda' bus='virtio'/>
+        </disk>
+        <disk type='file' device='disk'>
+            <source file='/Users/yoonsik/vms/ubuntu-20.04.3-live-server-arm64.iso'/>
+            <target dev='hdb' bus='virtio'/>
+        </disk>
+        <console type='pty'>
+            <target type='serial'/>
+        </console>
+        <input type='tablet' bus='usb'/>
+        <input type='keyboard' bus='usb'/>
+        <graphics type='vnc' port='5900' listen='127.0.0.1'/>
+        <video>
+            <model type='virtio' vram='16384'/>
+        </video>
+    </devices>
+    <seclabel type='none'/>
+    <qemu:commandline>
+        <qemu:arg value='-machine'/>
+        <qemu:arg value='type=virt,highmem=off'/>
+        <qemu:arg value='-accel'/>
+        <qemu:arg value='hvf'/>
+        <qemu:arg value='-netdev'/>
+        <qemu:arg value='user,id=n1,hostfwd=tcp::2222-:22'/>
+        <qemu:arg value='-device'/>
+        <qemu:arg value='virtio-net-pci,netdev=n1,bus=pcie.0,addr=0x19'/>
+    </qemu:commandline>
+</domain>
