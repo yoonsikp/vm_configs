@@ -1,4 +1,4 @@
-<domain type='qemu' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+<domain type='hvf' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
     <name>ubuntu</name>
     <uuid>2005CC24-522A-4485-9B9A-E60A61D9F8CF</uuid>
     <memory unit='GiB'>2</memory>
@@ -42,8 +42,6 @@
     <qemu:commandline>
         <qemu:arg value='-machine'/>
         <qemu:arg value='highmem=off'/>
-        <qemu:arg value='-accel'/>
-        <qemu:arg value='hvf'/>
         <qemu:arg value='-netdev'/>
         <qemu:arg value='user,id=n1,hostfwd=tcp::2222-:22'/>
         <qemu:arg value='-device'/>
