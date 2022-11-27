@@ -40,8 +40,6 @@
     </devices>
     <seclabel type='none'/>
     <qemu:commandline>
-        <qemu:arg value='-machine'/>
-        <qemu:arg value='highmem=off'/>
         <qemu:arg value='-netdev'/>
         <qemu:arg value='user,id=n1,hostfwd=tcp::2222-:22'/>
         <qemu:arg value='-device'/>
