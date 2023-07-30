@@ -1,0 +1,4 @@
+#!/bin/bash
+
+for i in $(virsh list --autostart --all --name); do virsh start $i; done
+
